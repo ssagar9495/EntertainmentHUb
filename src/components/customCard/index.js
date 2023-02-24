@@ -1,38 +1,58 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
+import { Badge } from "@mui/material";
 import { img_300, unavailable } from "../../config/config";
 
-const CustomCard = ({ data }) => {
-  console.log("data==>", data);
+const CustomCard = ({ title, poster, date, type, rating }) => {
+  const [ratingColor, setRatingColor] = useState("default");
+
+  useEffect(() => {
+    if (rating < 6) {
+      setRatingColor("error");
+    } else if (rating > 7) {
+      setRatingColor("info");
+    } else if (rating > 8) {
+      setRatingColor("lightgreen");
+    } else {
+      setRatingColor("success");
+    }
+  }, []);
+
   return (
-    <Card sx={{ maxWidth: 250, cursor: "pointer" }}>
-      <CardMedia
-        component="img"
-        alt="green iguana"
-        height="250"
-        image={
-          data?.poster_path ? `${img_300}${data?.poster_path}` : unavailable
-        }
-      />
-      <CardContent>
-        <Typography variant="body2" color="text.secondary">
-          {data?.original_title ? data?.original_title : "No Name"}
-        </Typography>
-        <Typography
-          variant="body2"
-          color="text.secondary"
-          display="flex"
-          justifyContent="space-between"
-          marginTop="10px"
-        >
-          <div>{data?.media_type}</div>
-          <div>{data?.first_air_date ? data?.first_air_date : ""}</div>
-        </Typography>
-      </CardContent>
-    </Card>
+    <>
+      <Badge
+        color={ratingColor}
+        badgeContent={rating?.toFixed(1)}
+        style={{ zIndex: 0 }}
+      ></Badge>
+      <Card sx={{ maxWidth: 250, cursor: "pointer", bgcolor: "gray" }}>
+        <CardMedia
+          component="img"
+          alt="green iguana"
+          height="250"
+          image={poster ? `${img_300}${poster}` : unavailable}
+        />
+
+        <CardContent>
+          <Typography variant="body2" color="white">
+            {title ? title.substring(0, 20) : "No Name"}
+          </Typography>
+          <Typography
+            variant="body2"
+            color="white"
+            display="flex"
+            justifyContent="space-between"
+            marginTop="10px"
+          >
+            <div>{type ? type : ""}</div>
+            <div>{date ? date : ""}</div>
+          </Typography>
+        </CardContent>
+      </Card>
+    </>
   );
 };
 
