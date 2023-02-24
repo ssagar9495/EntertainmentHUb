@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography";
 import { Badge } from "@mui/material";
 import { img_300, unavailable } from "../../config/config";
 
-const CustomCard = ({ title, poster, date, type, rating }) => {
+const CustomCard = ({ title, poster, date, type, rating, onCardClick }) => {
   const [ratingColor, setRatingColor] = useState("default");
 
   useEffect(() => {
@@ -28,7 +28,18 @@ const CustomCard = ({ title, poster, date, type, rating }) => {
         badgeContent={rating?.toFixed(1)}
         style={{ zIndex: 0 }}
       ></Badge>
-      <Card sx={{ maxWidth: 250, cursor: "pointer", bgcolor: "gray" }}>
+      <Card
+        sx={{
+          maxWidth: 250,
+          cursor: "pointer",
+          bgcolor: "gray",
+          "&:hover": {
+            bgcolor: "#ffffff",
+            color: "#2f2f2f",
+          },
+        }}
+        onClick={onCardClick}
+      >
         <CardMedia
           component="img"
           alt="green iguana"
@@ -37,15 +48,16 @@ const CustomCard = ({ title, poster, date, type, rating }) => {
         />
 
         <CardContent>
-          <Typography variant="body2" color="white">
+          <Typography variant="body2" color="black">
             {title ? title.substring(0, 20) : "No Name"}
           </Typography>
           <Typography
             variant="body2"
-            color="white"
+            color="black"
             display="flex"
             justifyContent="space-between"
             marginTop="10px"
+            textTransform="capitalize"
           >
             <div>{type ? type : ""}</div>
             <div>{date ? date : ""}</div>

@@ -1,13 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import { Movies, Search, TvSeries, Trending } from "../pages";
 import { ROUTES } from "./router";
-import {
-  BrowserRouter,
-  Navigate,
-  Route,
-  Routes,
-  useLocation,
-} from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 const Routing = () => {
   return (
