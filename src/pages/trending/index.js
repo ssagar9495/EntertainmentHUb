@@ -68,7 +68,13 @@ const Trending = () => {
   return (
     <>
       <PageHeading title={PAGE_HEADINGS?.HEADING_TRENDING} />
-      <Grid spacing={2} direction="row" display="flex">
+      <Grid
+        spacing={2}
+        sx={{
+          display: "flex",
+          flexDirection: { xs: "column", sm: "row", md: "row" },
+        }}
+      >
         <CustomFilter
           filterArray={FILTER_VALUE}
           onChange={filterHandler}
@@ -86,11 +92,17 @@ const Trending = () => {
         direction="row"
         justify="flex-start"
         alignItems="flex-start"
-        marginLeft="35px"
       >
         {dataList?.map((data, index, arr) => {
           return (
-            <Grid item xs={12} sm={6} md={3} key={data?.id}>
+            <Grid
+              item
+              xs={12}
+              sm={6}
+              md={3}
+              key={data?.id}
+              textAlign="-webkit-center"
+            >
               <CustomCard
                 onCardClick={(event) => onCardClick(event, data)}
                 poster={data?.poster_path}

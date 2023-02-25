@@ -29,21 +29,26 @@ const CustomModal = ({
   closeModalHandler,
   selectedCardData,
   movieType,
+  tabType,
 }) => {
   ////TOAST SETTING
 
   /////HANDLER FOR GETTING YOUTUBE LINK//////
 
   const youTubeHandler = () => {
+    console.log("selectedCardData==>", selectedCardData);
     listApi(
       `${API.YOUTUBE_ID}${
-        selectedCardData?.media_type
+        tabType
+          ? tabType
+          : selectedCardData?.media_type
           ? selectedCardData?.media_type
           : movieType
           ? "movie"
           : "tv"
       }/${selectedCardData?.id}/videos${apiKey}&language=en-US`
     ).then((res) => {
+      console.log("res==>", res);
       res?.data?.results[0]?.key
         ? window.open(
             `https://www.youtube.com/watch?v=${res?.data?.results[0]?.key}`
@@ -67,15 +72,19 @@ const CustomModal = ({
         <Grid
           container
           spacing={2}
-          sx={{ display: "flex", justifyContent: "space-between" }}
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            flexDirection: { xs: "column", sm: "row" },
+          }}
         >
-          <Grid item xs={4}>
+          <Grid item xs={12} sm={4} textAlign="center">
             <img
               src={`${img_200}${selectedCardData?.poster_path}`}
               alt={selectedCardData?.poster_path}
             />
           </Grid>
-          <Grid item xs={7}>
+          <Grid item xs={12} sm={7}>
             <Item>
               <Heading selectedCardData={selectedCardData} />
               <Item>

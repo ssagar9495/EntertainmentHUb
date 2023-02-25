@@ -26,7 +26,7 @@ const CustomCard = ({ title, poster, date, type, rating, onCardClick }) => {
       <Badge
         color={ratingColor}
         badgeContent={rating?.toFixed(1)}
-        style={{ zIndex: 0 }}
+        style={{ zIndex: 0, left: "117px", top: "12px" }}
       ></Badge>
       <Card
         sx={{

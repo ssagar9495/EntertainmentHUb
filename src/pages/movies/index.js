@@ -54,11 +54,18 @@ const Movies = () => {
         direction="row"
         justify="flex-start"
         alignItems="flex-start"
-        marginLeft="35px"
+        // marginLeft="35px"
       >
         {dataList?.map((data, index, arr) => {
           return (
-            <Grid item xs={12} sm={6} md={3} key={data?.id}>
+            <Grid
+              item
+              xs={12}
+              sm={6}
+              md={3}
+              key={data?.id}
+              textAlign="-webkit-center"
+            >
               <CustomCard
                 onCardClick={(event) => onCardClick(event, data)}
                 poster={data?.poster_path}

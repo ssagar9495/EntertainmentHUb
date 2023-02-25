@@ -5,10 +5,11 @@ import CameraRollIcon from "@mui/icons-material/CameraRoll";
 
 const Header = () => {
   return (
-    <div style={{ minHeight: "100px" }}>
+    <div style={{ minHeight: "70px" }}>
       <Typography
-        variant="h2"
-        component="h2"
+        variant="h1"
+        component="h1"
+        fontSize="200%"
         color="white"
         fontWeight="400"
         display="flex"
@@ -21,10 +22,11 @@ const Header = () => {
         zIndex="1"
         width="100%"
         bgcolor="#05445E"
+        sx={{ textAlign: { xs: "center" } }}
       >
-        <TheatersIcon fontSize="45px" />
+        <TheatersIcon fontSize="10%" />
         ENTERTAINMENT HUB
-        <CameraRollIcon fontSize="45px" />
+        <CameraRollIcon fontSize="10%" />
       </Typography>
     </div>
   );

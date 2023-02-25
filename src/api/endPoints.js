@@ -6,6 +6,6 @@ export const API = {
     "https://api.themoviedb.org/3/discover/movie?api_key=a5e491eb8beca69a15930df3567b25c0",
   LIST_TV_SERIES:
     "https://api.themoviedb.org/3/discover/tv?api_key=a5e491eb8beca69a15930df3567b25c0",
-  SEARCH: "",
+  SEARCH: "https://api.themoviedb.org/3/search/",
   YOUTUBE_ID: "https://api.themoviedb.org/3/",
 };

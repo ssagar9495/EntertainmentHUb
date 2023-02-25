@@ -1,13 +1,13 @@
 import React from "react";
 import { Typography } from "@mui/material";
 
-const PageHeading = ({ title }) => {
+const DataAlert = () => {
   return (
     <Typography
-      variant="h5"
-      component="h5"
+      variant="h6"
+      component="h6"
       color="white"
-      fontWeight="300"
+      fontWeight="500"
       display="flex"
       justifyContent="center"
       alignItems="center"
@@ -15,9 +15,9 @@ const PageHeading = ({ title }) => {
       paddingBottom="10px"
       textAlign="center"
     >
-      {title}
+      Search Your Favourite Movies And TV-Seasons
     </Typography>
   );
 };
 
-export default PageHeading;
+export default DataAlert;
